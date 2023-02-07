@@ -13,12 +13,10 @@ def max_independent_set(nums):
     dp[0] = nums[0]
     dp[1] = max(nums[0], nums[1])
 
+    #loops throught the array
     for i in range(2, n):
-        # dp[i-1] represents the max sum without considering nums[i]
-        # dp[i-2] + nums[i] represents the max sum considering nums[i]
         dp[i] = max(dp[i-1], dp[i-2] + nums[i])
 
-    # construct the selected list
     i = n - 1
     while i >= 0:
         if dp[i] == dp[i-1]:
